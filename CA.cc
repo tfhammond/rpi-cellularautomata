@@ -82,7 +82,7 @@ void Sierpinski(Canvas *canvas)
             //cout<<" "<<" "; 
         else {
             canvas->SetPixel(x,y,255,255,255);
-            canvas->SetPixel(x+1,y,0,0,0)
+            canvas->SetPixel(x+1,y,0,0,0);
         }
             //cout<<"* "; 
         } 
