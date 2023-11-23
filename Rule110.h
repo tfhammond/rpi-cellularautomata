@@ -52,21 +52,25 @@ std::vector<int> Rule110::generateNewPattern() const
 }
 
 // Function to print the elements of the pattern vector
-void Rule110::printPattern() const
+void Rule110::printPattern(int col, int row) const
 {
     for (int value : patternVector)
     {
         if (value == 1){
-            canvas->SetPixel(x,y,255,255,255);
+            canvas->SetPixel(col,row,255,255,255);
             usleep(1 * 1000);
         }
         else{
-            canvas->SetPixel(x,y,0,0,0);
+            canvas->SetPixel(col,row,0,0,0);
             usleep(1 * 1000);
         }
         std::cout << value;
+
+        col++;
+
     }
 
+    
     std::cout << std::endl;
 }
 
@@ -74,12 +78,12 @@ void Rule110::printPattern() const
 void Rule110::simulate(int iterations)
 {
     // Print the initial pattern
-    printPattern();
+    printPattern(0,0);
 
     // Generate and print new patterns for the specified number of iterations
     for (int i = 0; i < iterations; ++i)
     {
         patternVector = generateNewPattern();
-        printPattern();
+        printPattern(0,i);
     }
 }
