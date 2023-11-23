@@ -29,7 +29,7 @@ static void Rule30(Canvas *canvas){
         return;
 
     // Iterate over each bit position in 'state', from most significant to least significant
-    for (int j = sizeof(uint64_t) * 2 - 1; j >= 0; j--) {
+    for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
         if (interrupt_received)
             return;
       // Output '1' if the current bit in 'state' is set, otherwise output '-'
@@ -39,7 +39,7 @@ static void Rule30(Canvas *canvas){
 
         bool cur = (state >> j) & 1;
         if (cur == true) {
-            canvas->SetPixel(j, i, 255,255,255);
+            canvas->SetPixel(j, i, 100,100,100);
         } else {
             canvas->SetPixel(j,i,0,0,0);
         }
@@ -51,7 +51,6 @@ static void Rule30(Canvas *canvas){
 
     // Update the 'state' using the Rule 30 logic: (left, current, right) -> left XOR (current OR right)
     state = (state >> 1) ^ (state | state << 1) & 0xFFFFFFFFFFFFFFFF;
-    usleep(1 * 1000);
   }
 
 
