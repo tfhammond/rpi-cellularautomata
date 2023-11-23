@@ -78,7 +78,7 @@ void Sierpinski(Canvas *canvas)
         if(x & y){
             canvas->SetPixel(x,y,0,0,0);
             usleep(1 * 1000);
-            canvas->SetPixel(x+1,y,0,0,0);
+            //canvas->SetPixel(x+1,y,0,0,0);
             usleep(1 * 1000);
         }
             
@@ -86,7 +86,7 @@ void Sierpinski(Canvas *canvas)
         else {
             canvas->SetPixel(x,y,255,255,255);
             usleep(1 * 1000);
-            canvas->SetPixel(x+1,y,0,0,0);
+            //canvas->SetPixel(x+1,y,0,0,0);
             usleep(1 * 1000);
         }
             //cout<<"* "; 
