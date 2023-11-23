@@ -37,6 +37,12 @@ Rule110::Rule110(int numberOfColumns, Canvas *canvas_)
     canvas = canvas_;
 }
 
+ // Define the rules for updating the pattern
+    // Current pattern:         111 110 101 100 011 010 001 000
+    // New state for center cell: 0  0   0   1   1   1   1   0
+                               // 0  1   1   0   1   1   1   0
+    
+
 // Function to generate a new pattern based on the given pattern
 std::vector<int> Rule110::generateNewPattern() const
 {
@@ -47,7 +53,9 @@ std::vector<int> Rule110::generateNewPattern() const
         int value = 100 * patternVector[i - 1] + 10 * patternVector[i] + patternVector[i + 1];
 
         // Apply the rules to update the center cell
-        newPatternVector[i] = (value == 100 || value == 1 || value == 10 || value == 11) ? 1 : 0;
+        
+        //newPatternVector[i] = (value == 100 || value == 1 || value == 10 || value == 11) ? 1 : 0;
+        newPatternVector[i] = (value == 110 || value == 101 || value == 10 || value == 11 || value == 1) ? 1 : 0;
     }
 
     return newPatternVector;
