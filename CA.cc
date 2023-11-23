@@ -38,7 +38,11 @@ static void Rule30(Canvas *canvas){
                      0, 0, 0); */
 
         bool cur = (state >> j) & 1;
-        cur ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0);
+        if (cur == true) {
+            canvas->SetPixel(j, numRow + i, 255,255,255);
+        } else {
+            canvas->SetPixel(j,i+numRow,0,0,0);
+        }
         usleep(1 * 10000);
     }
 
@@ -52,8 +56,6 @@ static void Rule30(Canvas *canvas){
 
 
 }
-
-
 
 
 static void DrawOnCanvas(Canvas *canvas) {
