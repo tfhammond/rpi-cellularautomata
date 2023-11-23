@@ -16,7 +16,7 @@ public:
     void run() {
         canvas->Fill(0,0,0);
         // Print the initial state
-        printState();
+        printState(0);
 
         // Generate and print the next generations
         for (int generation = 1; generation <= numGenerations_; ++generation) {
@@ -43,7 +43,7 @@ private:
     std::bitset<8> currentState_;
     int numCells_;
     int numGenerations_;
-    Canvas canvas;
+    Canvas *canvas;
 
     bool applyRule110(bool left, bool center, bool right) {
         return (left ^ (center || right));
