@@ -29,7 +29,7 @@ static void Rule30(Canvas *canvas){
         return;
 
     // Iterate over each bit position in 'state', from most significant to least significant
-    for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
+    for (int j = 64; j >= 0; j--) {
         if (interrupt_received)
             return;
       // Output '1' if the current bit in 'state' is set, otherwise output '-'
