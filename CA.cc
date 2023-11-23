@@ -18,7 +18,7 @@ static void InterruptHandler(int signo) {
 
 static void Rule30(Canvas *canvas){
 
-  canvas->Fill(0, 0, 0);
+  //canvas->Fill(0, 0, 0);
   // Initialize a 64-bit unsigned integer 'state' with the 32nd bit set to '1' and others set to '0'
   uint64_t state = 1u << 31;
   int numRow = 0;
