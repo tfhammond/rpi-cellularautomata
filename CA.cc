@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
 
-  Rule110Automaton automaton(2048,64, canvas);
+  Rule110Automaton automaton(64,32, canvas);
   automaton.run();
 
   //Rule30(canvas);    // Using the canvas.
