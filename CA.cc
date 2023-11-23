@@ -145,7 +145,7 @@ int main(int argc, char *argv[]) {
   automaton.run();
 
   //Rule30(canvas);    // Using the canvas.
-  Sierpinski(canvas);
+  //Sierpinski(canvas);
 
   // Animation finished. Shut down the RGB matrix.
   canvas->Clear();
