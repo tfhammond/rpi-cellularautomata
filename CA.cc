@@ -60,7 +60,7 @@ static void Rule30(Canvas *canvas){
 void Sierpinski(Canvas *canvas) 
 { 
     canvas->Fill(0, 0, 0);
-    for (int y = 64 - 1; y >= 0; y--) { 
+    for (int y = 32 - 1; y >= 0; y--) { 
   
         // printing space till 
         // the value of y 
@@ -135,7 +135,7 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
 
-  Rule30(canvas);    // Using the canvas.
+  //Rule30(canvas);    // Using the canvas.
   Sierpinski(canvas);
 
   // Animation finished. Shut down the RGB matrix.
