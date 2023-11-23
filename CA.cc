@@ -40,10 +40,10 @@ static void Rule30(Canvas *canvas){
         bool cur = (state >> j) & 1;
         if (cur == true) {
             canvas->SetPixel(j, i, 255,255,255);
-            usleep(1 * 10000);
+            usleep(1 * 1000);
         } else {
             canvas->SetPixel(j,i,0,0,0);
-            usleep(1 * 10000);
+            usleep(1 * 1000);
         }
         
     }
@@ -53,7 +53,6 @@ static void Rule30(Canvas *canvas){
 
     // Update the 'state' using the Rule 30 logic: (left, current, right) -> left XOR (current OR right)
     state = (state >> 1) ^ (state | state << 1) & 0xFFFFFFFFFFFFFFFF;
-    usleep(1 * 10000);
   }
 
 
