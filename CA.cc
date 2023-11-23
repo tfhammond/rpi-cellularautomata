@@ -70,7 +70,7 @@ void Sierpinski(Canvas *canvas)
         } 
   
         // printing '*' 
-        for (int x = 0; x + y < 64; x++) { 
+        for (int x = 0; x + y < 128; x++) { 
   
         // printing '*' at the appropriate position 
         // is done by the and value of x and y 
