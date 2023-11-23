@@ -3,9 +3,12 @@
 
 #include "led-matrix.h"
 
+using rgb_matrix::RGBMatrix;
+using rgb_matrix::Canvas;
+
 class Rule110Automaton {
 public:
-    Rule110Automaton(int numCells, int numGenerations, Canavs *canvas) : numCells_(numCells), numGenerations_(numGenerations) {
+    Rule110Automaton(int numCells, int numGenerations, Canvas *canvas) : numCells_(numCells), numGenerations_(numGenerations) {
         // Initialize the state with a single '1' in the middle
         currentState_.set(7, true);
     }
