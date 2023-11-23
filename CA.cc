@@ -20,7 +20,7 @@ static void Rule30(Canvas *canvas){
 
   //canvas->Fill(0, 0, 0);
   // Initialize a 64-bit unsigned integer 'state' with the 32nd bit set to '1' and others set to '0'
-  uint64_t state = 1u >> 31;
+  uint64_t state = 1u << 31;
   int numRow = 0;
 
   // Iterate over 32 rows
@@ -29,7 +29,7 @@ static void Rule30(Canvas *canvas){
         return;
 
     // Iterate over each bit position in 'state', from most significant to least significant
-    for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
+    for (int j = sizeof(uint64_t) * 2 - 1; j >= 0; j--) {
         if (interrupt_received)
             return;
       // Output '1' if the current bit in 'state' is set, otherwise output '-'
