@@ -50,16 +50,14 @@ std::vector<int> Rule110::generateNewPattern() const
 
     for (size_t i = 1; i < patternVector.size() - 1; ++i)
     {
-        int value = 100 * patternVector[i - 1] + 10 * patternVector[i] + patternVector[i + 1];
+        int value = 100 * patternVector[i - 1];
+        value += 10 * patternVector[i]
+        value += patternVector[i + 1];
 
         // Apply the rules to update the center cell
         
       //newPatternVector[i] = (value == 100 || value == 1 || value == 10 || value == 11) ? 1 : 0;
-        if (value == 110 || value == 101 || value == 11 || value == 10 || value == 1)
-            newPatternVector[i] = 1;
-        else
-            newPatternVector[i] = 0;
-        //newPatternVector[i] = (value == 111 || value == 110 || value == 101 || value == 10 || value == 11 || value == 1) ? 1 : 0;
+        newPatternVector[i] = (value == 110 || value == 101 || value == 10 || value == 11 || value == 1) ? 1 : 0;
     }
 
     return newPatternVector;
