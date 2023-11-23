@@ -64,7 +64,8 @@ void Sierpinski(Canvas *canvas)
   
         // printing space till 
         // the value of y 
-        for (int i = 0; i < y; i++) { 
+        for (int i = 0; i < y; i++) {
+            usleep(1 * 1000); 
             canvas->SetPixel(i,y,0,0,0); 
         } 
   
@@ -76,13 +77,17 @@ void Sierpinski(Canvas *canvas)
         // wherever value is 0 we have printed '*' 
         if(x & y){
             canvas->SetPixel(x,y,0,0,0);
+            usleep(1 * 1000);
             canvas->SetPixel(x+1,y,0,0,0);
+            usleep(1 * 1000);
         }
             
             //cout<<" "<<" "; 
         else {
             canvas->SetPixel(x,y,255,255,255);
+            usleep(1 * 1000);
             canvas->SetPixel(x+1,y,0,0,0);
+            usleep(1 * 1000);
         }
             //cout<<"* "; 
         } 
