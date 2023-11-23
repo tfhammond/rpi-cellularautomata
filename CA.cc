@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
 
-  DrawOnCanvas(canvas);    // Using the canvas.
+  Rule30(canvas);    // Using the canvas.
 
   // Animation finished. Shut down the RGB matrix.
   canvas->Clear();
