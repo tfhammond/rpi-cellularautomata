@@ -7,6 +7,7 @@
 
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
+using rgb_matrix::RuntimeOptions;
 
 volatile bool interrupt_received = false;
 static void InterruptHandler(int signo) {
@@ -37,11 +38,14 @@ static void DrawOnCanvas(Canvas *canvas) {
 
 int main(int argc, char *argv[]) {
   RGBMatrix::Options defaults;
-  defaults.hardware_mapping = "regular";  // or e.g. "adafruit-hat"
+  defaults.hardware_mapping = "adafruit-hat";  // or e.g. "adafruit-hat"
   defaults.rows = 32;
+  defaults.cols = 64;
   defaults.chain_length = 1;
   defaults.parallel = 1;
   defaults.show_refresh_rate = true;
+  RGBMatrix::RuntimeOptions options;
+  options.gpio_slowdown = 4;
   Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
   if (canvas == NULL)
     return 1;
