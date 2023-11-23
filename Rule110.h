@@ -6,53 +6,72 @@
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
 
-class Rule110Automaton {
-public:
-    Rule110Automaton(int numCells, int numGenerations, Canvas *canvas_) : numCells_(numCells), numGenerations_(numGenerations), canvas(canvas_) {
-        // Initialize the state with a single '1' in the middle
-        currentState_.set(7, true);
-    }
+#include <vector>
+#include <iostream>
 
-    void run() {
-        canvas->Fill(0,0,0);
-        // Print the initial state
-        printState(0);
-
-        // Generate and print the next generations
-        for (int generation = 1; generation <= numGenerations_; ++generation) {
-            std::bitset<8> nextState;
-
-            // Apply Rule 110 to each cell and update the state
-            for (int i = 0; i < numCells_; ++i) {
-                bool left = (i > 0) ? currentState_[i - 1] : 0;
-                bool center = currentState_[i];
-                bool right = (i < numCells_ - 1) ? currentState_[i + 1] : 0;
-
-                nextState[i] = applyRule110(left, center, right);
-            }
-
-            // Print the current state
-            printState(generation);
-
-            // Update the current state for the next generation
-            currentState_ = nextState;
-        }
-    }
-
+class Rule110
+{
 private:
-    std::bitset<8> currentState_;
-    int numCells_;
-    int numGenerations_;
-    Canvas *canvas;
+    std::vector<int> patternVector;
 
-    bool applyRule110(bool left, bool center, bool right) {
-        return (left ^ (center || right));
-    }
+    // Function to generate a new pattern based on the given pattern
+    std::vector<int> generateNewPattern() const;
 
-    void printState(int generation) const {
-        for (int i = 7; i >= 0; --i) {
-            (currentState_[i] ? canvas->SetPixel(i, generation, 255,255,255) : canvas->SetPixel(i, generation, 0,0,0));
-            usleep(1 * 1000);
-        }
-    }
+public:
+    // Constructor to initialize the pattern vector
+    Rule110(int numberOfColumns);
+
+    // Function to print the elements of the pattern vector
+    void printPattern() const;
+
+    // Function to simulate the Rule110 for a given number of iterations
+    void simulate(int iterations);
 };
+
+// Constructor to initialize the pattern vector
+Rule110::Rule110(int numberOfColumns)
+{
+    patternVector = std::vector<int>(numberOfColumns, 0);
+    patternVector[numberOfColumns / 2] = 1;
+}
+
+// Function to generate a new pattern based on the given pattern
+std::vector<int> Rule110::generateNewPattern() const
+{
+    std::vector<int> newPatternVector(patternVector);
+
+    for (size_t i = 1; i < patternVector.size() - 1; ++i)
+    {
+        int value = 100 * patternVector[i - 1] + 10 * patternVector[i] + patternVector[i + 1];
+
+        // Apply the rules to update the center cell
+        newPatternVector[i] = (value == 100 || value == 1 || value == 10 || value == 11) ? 1 : 0;
+    }
+
+    return newPatternVector;
+}
+
+// Function to print the elements of the pattern vector
+void Rule110::printPattern() const
+{
+    for (int value : patternVector)
+    {
+        std::cout << value;
+    }
+
+    std::cout << std::endl;
+}
+
+// Function to simulate the Rule110 for a given number of iterations
+void Rule110::simulate(int iterations)
+{
+    // Print the initial pattern
+    printPattern();
+
+    // Generate and print new patterns for the specified number of iterations
+    for (int i = 0; i < iterations; ++i)
+    {
+        patternVector = generateNewPattern();
+        printPattern();
+    }
+}
