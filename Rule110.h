@@ -55,7 +55,7 @@ std::vector<int> Rule110::generateNewPattern() const
         // Apply the rules to update the center cell
         
       //newPatternVector[i] = (value == 100 || value == 1 || value == 10 || value == 11) ? 1 : 0;
-        newPatternVector[i] = (value == 110 || value == 101 || value == 10 || value == 11 || value == 1) ? 1 : 0;
+        newPatternVector[i] = (value == 111 || value == 110 || value == 101 || value == 10 || value == 11 || value == 1) ? 1 : 0;
     }
 
     return newPatternVector;
