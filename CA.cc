@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
   defaults.parallel = 1;
   //defaults.show_refresh_rate = true;
   RuntimeOptions options;
-  options.gpio_slowdown = 4;
+  options.gpio_slowdown = 2;
   Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
   if (canvas == NULL)
     return 1;
