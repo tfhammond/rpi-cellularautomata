@@ -74,13 +74,16 @@ void Sierpinski(Canvas *canvas)
         // printing '*' at the appropriate position 
         // is done by the and value of x and y 
         // wherever value is 0 we have printed '*' 
-        if(x & y)
+        if(x & y){
             canvas->SetPixel(x,y,0,0,0);
             canvas->SetPixel(x+1,y,0,0,0);
+        }
+            
             //cout<<" "<<" "; 
-        else
+        else {
             canvas->SetPixel(x,y,255,255,255);
             canvas->SetPixel(x+1,y,0,0,0)
+        }
             //cout<<"* "; 
         } 
   
