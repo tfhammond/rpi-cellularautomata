@@ -55,8 +55,38 @@ static void Rule30(Canvas *canvas){
     state = (state >> 1) ^ (state | state << 1) & 0xFFFFFFFFFFFFFFFF;
   }
 
-  usleep(1 * 100000);
 }
+
+void Sierpinski(Canvas *canvas) 
+{ 
+    canvas->Fill(0, 0, 0);
+    for (int y = n - 1; y >= 0; y--) { 
+  
+        // printing space till 
+        // the value of y 
+        for (int i = 0; i < y; i++) { 
+            canvas->SetPixel(i,y,0,0,0); 
+        } 
+  
+        // printing '*' 
+        for (int x = 0; x + y < n; x++) { 
+  
+        // printing '*' at the appropriate position 
+        // is done by the and value of x and y 
+        // wherever value is 0 we have printed '*' 
+        if(x & y)
+            canvas->SetPixel(x,y,0,0,0);
+            canvas->SetPixel(x+1,y,0,0,0);
+            //cout<<" "<<" "; 
+        else
+            canvas->SetPixel(x,y,255,255,255);
+            canvas->SetPixel(x+1,y,0,0,0)
+            //cout<<"* "; 
+        } 
+  
+        //cout<<endl; 
+    } 
+} 
 
 
 static void DrawOnCanvas(Canvas *canvas) {
@@ -103,6 +133,7 @@ int main(int argc, char *argv[]) {
   signal(SIGINT, InterruptHandler);
 
   Rule30(canvas);    // Using the canvas.
+  Sierpinski(canvas);
 
   // Animation finished. Shut down the RGB matrix.
   canvas->Clear();
