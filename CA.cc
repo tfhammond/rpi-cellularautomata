@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <signal.h>
+#include "Rule110.h"
 
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
@@ -139,6 +140,9 @@ int main(int argc, char *argv[]) {
   // for that.
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
+
+  Rule110Automaton 110(32,64);
+  110.run();
 
   //Rule30(canvas);    // Using the canvas.
   Sierpinski(canvas);
