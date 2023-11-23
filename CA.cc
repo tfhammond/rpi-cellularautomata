@@ -39,7 +39,7 @@ static void Rule30(Canvas *canvas){
 
         bool cur = (state >> j) & 1;
         cur ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0);
-        usleep(1 * 1000);
+        usleep(1 * 10000);
     }
 
     // Move to the next line after printing a row
