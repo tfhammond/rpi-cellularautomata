@@ -13,6 +13,7 @@ class Rule110
 {
 private:
     std::vector<int> patternVector;
+    Canvas *canvas;
 
     // Function to generate a new pattern based on the given pattern
     std::vector<int> generateNewPattern() const;
@@ -29,10 +30,11 @@ public:
 };
 
 // Constructor to initialize the pattern vector
-Rule110::Rule110(int numberOfColumns)
+Rule110::Rule110(int numberOfColumns, Canvas *canvas_)
 {
     patternVector = std::vector<int>(numberOfColumns, 0);
     patternVector[numberOfColumns / 2] = 1;
+    canvas = canvas_;
 }
 
 // Function to generate a new pattern based on the given pattern
