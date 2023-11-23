@@ -39,7 +39,7 @@ static void Rule30(Canvas *canvas){
 
         bool cur = (state >> j) & 1;
         if (cur == true) {
-            canvas->SetPixel(j, i, 100,100,100);
+            canvas->SetPixel(j, i, 255,255,255);
         } else {
             canvas->SetPixel(j,i,0,0,0);
         }
