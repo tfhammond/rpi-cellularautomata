@@ -1,6 +1,7 @@
 #include "led-matrix.h"
 
 #include <unistd.h>
+#include <stdint.h>
 #include <math.h>
 #include <stdio.h>
 #include <signal.h>
@@ -13,6 +14,39 @@ volatile bool interrupt_received = false;
 static void InterruptHandler(int signo) {
   interrupt_received = true;
 }
+
+
+static void Rule30(Canvas *canvas){
+
+  canvas->Fill(0, 0, 0);
+  // Initialize a 64-bit unsigned integer 'state' with the 32nd bit set to '1' and others set to '0'
+  uint64_t state = 1u << 31;
+  int numRow = 0;
+
+  // Iterate over 32 rows
+  for (int i = 0; i < 32; i++) {
+
+    // Iterate over each bit position in 'state', from most significant to least significant
+    for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
+      // Output '1' if the current bit in 'state' is set, otherwise output '-'
+      state >> j & 1 ? canvas->SetPixel(j, i + numRow,
+                     255, 255, 255) : canvas->SetPixel(j, i + numRow,
+                     0, 0, 0);
+    }
+
+    // Move to the next line after printing a row
+    numRow++;
+
+    // Update the 'state' using the Rule 30 logic: (left, current, right) -> left XOR (current OR right)
+    state = (state >> 1) ^ (state | state << 1);
+    usleep(1 * 1000);
+  }
+
+
+}
+
+
+
 
 static void DrawOnCanvas(Canvas *canvas) {
   /*
