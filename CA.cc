@@ -25,9 +25,13 @@ static void Rule30(Canvas *canvas){
 
   // Iterate over 32 rows
   for (int i = 0; i < 32; i++) {
+    if (interrupt_received)
+        return;
 
     // Iterate over each bit position in 'state', from most significant to least significant
     for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
+        if (interrupt_received)
+            return;
       // Output '1' if the current bit in 'state' is set, otherwise output '-'
       /* state >> j & 1 ? canvas->SetPixel(j, i + numRow,
                      255, 255, 255) : canvas->SetPixel(j, i + numRow,
@@ -35,6 +39,7 @@ static void Rule30(Canvas *canvas){
 
         bool cur = (state >> j) & 1;
         cur ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0);
+        usleep(1 * 1000000);
     }
 
     // Move to the next line after printing a row
