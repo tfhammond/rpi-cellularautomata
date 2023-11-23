@@ -55,7 +55,7 @@ static void Rule30(Canvas *canvas){
     state = (state >> 1) ^ (state | state << 1) & 0xFFFFFFFFFFFFFFFF;
   }
 
-
+  usleep(1 * 100000);
 }
 
 
