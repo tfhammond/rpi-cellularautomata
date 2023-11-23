@@ -23,7 +23,7 @@ $(RGB_LIBRARY): FORCE
 	$(MAKE) -C $(RGB_LIBDIR)
 
 CA : $(OBJECTS) $(RGB_LIBRARY)
-    $(CXX) $(CXXFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 CA.o : CA.cc
 
