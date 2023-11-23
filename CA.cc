@@ -141,8 +141,8 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
 
-  Rule110Automaton 110(32,64);
-  110.run();
+  Rule110Automaton automaton(32,64, canvas);
+  automaton.run();
 
   //Rule30(canvas);    // Using the canvas.
   Sierpinski(canvas);
