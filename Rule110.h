@@ -51,7 +51,7 @@ private:
 
     void printState(int generation) const {
         for (int i = 7; i >= 0; --i) {
-            std::cout << (currentState_[i] ? canvas->SetPixel(generation, i, 255,255,255) : canvas->SetPixel(generation, i, 0,0,0));
+            (currentState_[i] ? canvas->SetPixel(generation, i, 255,255,255) : canvas->SetPixel(generation, i, 0,0,0));
         }
     }
 };
