@@ -18,7 +18,7 @@ static void InterruptHandler(int signo) {
 
 static void Rule30(Canvas *canvas){
 
-  //canvas->Fill(0, 0, 0);
+  canvas->Fill(255, 255, 255);
   // Initialize a 64-bit unsigned integer 'state' with the 32nd bit set to '1' and others set to '0'
   uint64_t state = 1u << 31;
   int numRow = 0;
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
   defaults.parallel = 1;
   //defaults.show_refresh_rate = true;
   RuntimeOptions options;
-  options.gpio_slowdown = 2;
+  options.gpio_slowdown = 4;
   Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
   if (canvas == NULL)
     return 1;
