@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
   signal(SIGINT, InterruptHandler);
 
   Rule110 automaton(32);
-  automaton.simulate();
+  automaton.simulate(32);
 
   //Rule30(canvas);    // Using the canvas.
   //Sierpinski(canvas);
