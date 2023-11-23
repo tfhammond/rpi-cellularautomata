@@ -60,7 +60,7 @@ static void Rule30(Canvas *canvas){
 void Sierpinski(Canvas *canvas) 
 { 
     canvas->Fill(0, 0, 0);
-    for (int y = n - 1; y >= 0; y--) { 
+    for (int y = 64 - 1; y >= 0; y--) { 
   
         // printing space till 
         // the value of y 
