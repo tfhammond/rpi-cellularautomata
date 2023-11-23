@@ -51,7 +51,7 @@ private:
 
     void printState(int generation) const {
         for (int i = 7; i >= 0; --i) {
-            (currentState_[i] ? canvas->SetPixel(generation, i, 255,255,255) : canvas->SetPixel(generation, i, 0,0,0));
+            (currentState_[i] ? canvas->SetPixel(i, generation, 255,255,255) : canvas->SetPixel(i, generation, 0,0,0));
             usleep(1 * 1000);
         }
     }
