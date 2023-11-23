@@ -92,8 +92,8 @@ int main(int argc, char *argv[]) {
   //defaults.show_refresh_rate = true;
   RuntimeOptions options;
   options.gpio_slowdown = 4;
-  options.pwm_lsb_nanoseconds = 200;
-  Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
+  //defaults.pwm_lsb_nanoseconds = 200;
+  Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults, &options);
   if (canvas == NULL)
     return 1;
 
