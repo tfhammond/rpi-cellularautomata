@@ -8,7 +8,7 @@ using rgb_matrix::Canvas;
 
 class Rule110Automaton {
 public:
-    Rule110Automaton(int numCells, int numGenerations, Canvas *canvas) : numCells_(numCells), numGenerations_(numGenerations) {
+    Rule110Automaton(int numCells, int numGenerations, Canvas *canvas) : numCells_(numCells), numGenerations_(numGenerations), canvas_(canvas) {
         // Initialize the state with a single '1' in the middle
         currentState_.set(7, true);
     }
@@ -32,7 +32,7 @@ public:
             }
 
             // Print the current state
-            printState();
+            printState(int generation);
 
             // Update the current state for the next generation
             currentState_ = nextState;
@@ -43,14 +43,15 @@ private:
     std::bitset<8> currentState_;
     int numCells_;
     int numGenerations_;
+    Canvas canvas_;
 
     bool applyRule110(bool left, bool center, bool right) {
         return (left ^ (center || right));
     }
 
-    void printState() const {
+    void printState(int generation) const {
         for (int i = 7; i >= 0; --i) {
-            std::cout << (currentState_[i] ? canvas->SetPixel(j, i, 255,255,255) : canvas->SetPixel(j, i, 0,0,0));
+            std::cout << (currentState_[i] ? canvas->SetPixel(generation, i, 255,255,255) : canvas->SetPixel(generation, i, 0,0,0));
         }
     }
 };
