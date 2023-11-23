@@ -56,6 +56,14 @@ void Rule110::printPattern() const
 {
     for (int value : patternVector)
     {
+        if (value == 1){
+            canvas->SetPixel(x,y,255,255,255);
+            usleep(1 * 1000);
+        }
+        else{
+            canvas->SetPixel(x,y,0,0,0);
+            usleep(1 * 1000);
+        }
         std::cout << value;
     }
 
