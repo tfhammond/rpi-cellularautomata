@@ -22,7 +22,7 @@ public:
     Rule110(int numberOfColumns);
 
     // Function to print the elements of the pattern vector
-    void printPattern() const;
+    void printPattern(int,int);
 
     // Function to simulate the Rule110 for a given number of iterations
     void simulate(int iterations);
@@ -52,7 +52,7 @@ std::vector<int> Rule110::generateNewPattern() const
 }
 
 // Function to print the elements of the pattern vector
-void Rule110::printPattern(int col, int row) const
+void Rule110::printPattern(int col, int row)
 {
     for (int value : patternVector)
     {
