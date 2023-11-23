@@ -29,9 +29,12 @@ static void Rule30(Canvas *canvas){
     // Iterate over each bit position in 'state', from most significant to least significant
     for (int j = sizeof(uint64_t) * 8 - 1; j >= 0; j--) {
       // Output '1' if the current bit in 'state' is set, otherwise output '-'
-      state >> j & 1 ? canvas->SetPixel(j, i + numRow,
+      /* state >> j & 1 ? canvas->SetPixel(j, i + numRow,
                      255, 255, 255) : canvas->SetPixel(j, i + numRow,
-                     0, 0, 0);
+                     0, 0, 0); */
+
+        bool cur = (state >> j) & 1;
+        currentBit ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0)
     }
 
     // Move to the next line after printing a row
@@ -77,7 +80,7 @@ int main(int argc, char *argv[]) {
   defaults.cols = 64;
   defaults.chain_length = 1;
   defaults.parallel = 1;
-  defaults.show_refresh_rate = true;
+  //defaults.show_refresh_rate = true;
   RuntimeOptions options;
   options.gpio_slowdown = 4;
   Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
