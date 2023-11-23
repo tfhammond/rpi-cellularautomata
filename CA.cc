@@ -34,7 +34,7 @@ static void Rule30(Canvas *canvas){
                      0, 0, 0); */
 
         bool cur = (state >> j) & 1;
-        currentBit ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0)
+        cur ? canvas->SetPixel(j, numRow + i, 255,255,255) : canvas->SetPixel(j,i+numRow,0,0,0);
     }
 
     // Move to the next line after printing a row
