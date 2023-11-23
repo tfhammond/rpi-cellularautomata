@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   defaults.chain_length = 1;
   defaults.parallel = 1;
   defaults.show_refresh_rate = true;
-  RGBMatrix::RuntimeOptions options;
+  RuntimeOptions options;
   options.gpio_slowdown = 4;
   Canvas *canvas = RGBMatrix::CreateFromFlags(&argc, &argv, &defaults);
   if (canvas == NULL)
