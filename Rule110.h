@@ -20,7 +20,7 @@ private:
 
 public:
     // Constructor to initialize the pattern vector
-    Rule110(int numberOfColumns, Canvas);
+    Rule110(int numberOfColumns, Canvas*);
 
     // Function to print the elements of the pattern vector
     void printPattern(int,int);
