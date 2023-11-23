@@ -50,7 +50,7 @@ static void Rule30(Canvas *canvas){
     numRow++;
 
     // Update the 'state' using the Rule 30 logic: (left, current, right) -> left XOR (current OR right)
-    state = (state >> 1) ^ (state | state << 1);
+    state = (state >> 1) ^ (state | state << 1) & 0xFFFFFFFFFFFFFFFF;
     usleep(1 * 1000);
   }
 
