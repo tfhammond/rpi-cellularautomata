@@ -5,7 +5,6 @@
 #include <math.h>
 #include <stdio.h>
 #include <signal.h>
-#include "Rule110.h"
 
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
@@ -58,67 +57,6 @@ static void Rule30(Canvas *canvas){
 
 }
 
-void Sierpinski(Canvas *canvas) 
-{ 
-    canvas->Fill(0, 0, 0);
-    for (int y = 0; y <= 32 - 1; y++) { 
-  
-        // printing space till 
-        // the value of y 
-        for (int i = 0; i < y; i++) {
-            usleep(1 * 1000); 
-            canvas->SetPixel(i,y,0,0,0); 
-        } 
-  
-        // printing '*' 
-        for (int x = 0; x + y < 32; x++) { 
-  
-        // printing '*' at the appropriate position 
-        // is done by the and value of x and y 
-        // wherever value is 0 we have printed '*' 
-        if(x & y){
-            canvas->SetPixel(x,y,0,0,0);
-            usleep(1 * 1000);
-            //canvas->SetPixel(x+1,y,0,0,0);
-            usleep(1 * 1000);
-        }
-            
-            //cout<<" "<<" "; 
-        else {
-            canvas->SetPixel(x,y,255,255,255);
-            usleep(1 * 1000);
-            //canvas->SetPixel(x+1,y,0,0,0);
-            usleep(1 * 1000);
-        }
-            //cout<<"* "; 
-        } 
-  
-        //cout<<endl; 
-    } 
-} 
-
-
-static void DrawOnCanvas(Canvas *canvas) {
-  /*
-   * Let's create a simple animation. We use the canvas to draw
-   * pixels. We wait between each step to have a slower animation.
-   */
-  canvas->Fill(0, 0, 255);
-
-  int center_x = canvas->width() / 2;
-  int center_y = canvas->height() / 2;
-  float radius_max = canvas->width() / 2;
-  float angle_step = 1.0 / 360;
-  for (float a = 0, r = 0; r < radius_max; a += angle_step, r += angle_step) {
-    if (interrupt_received)
-      return;
-    float dot_x = cos(a * 2 * M_PI) * r;
-    float dot_y = sin(a * 2 * M_PI) * r;
-    canvas->SetPixel(center_x + dot_x, center_y + dot_y,
-                     255, 0, 0);
-    usleep(1 * 1000);  // wait a little to slow down things.
-  }
-}
 
 int main(int argc, char *argv[]) {
   RGBMatrix::Options defaults;
@@ -141,11 +79,8 @@ int main(int argc, char *argv[]) {
   signal(SIGTERM, InterruptHandler);
   signal(SIGINT, InterruptHandler);
 
-  Rule110 automaton(64,canvas);
-  automaton.simulate(32);
 
-  //Rule30(canvas);    // Using the canvas.
-  //Sierpinski(canvas);
+  Rule30(canvas); // Runs Rule 30
 
   // Animation finished. Shut down the RGB matrix.
   canvas->Clear();
