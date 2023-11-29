@@ -39,10 +39,10 @@ static void Rule30(Canvas *canvas){
 
         bool cur = (state >> j) & 1;
         if (cur == true) {
-            canvas->SetPixel(j, i, 255,255,255);
+            canvas->SetPixel(64-j,i, 255,255,255);
             usleep(1 * 1000);
         } else {
-            canvas->SetPixel(j,i,0,0,0);
+            canvas->SetPixel(64-j,i,0,0,0);
             usleep(1 * 1000);
         }
         
